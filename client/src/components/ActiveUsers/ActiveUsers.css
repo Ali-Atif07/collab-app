@@ -1,0 +1,142 @@
+.active-users {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.users-list {
+  display: flex;
+  gap: 0;
+  position: relative;
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px 8px 12px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 24px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  margin-left: -8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.user-badge:first-child {
+  margin-left: 0;
+}
+
+.user-badge:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.user-badge.current-user {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #f0f2ff 0%, #e0e7ff 100%);
+  z-index: 5;
+}
+
+.user-badge.current-user:hover {
+  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+}
+
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.user-avatar::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.user-name {
+  color: #334155;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.users-count {
+  font-size: 13px;
+  color: #64748b;
+  white-space: nowrap;
+  font-weight: 600;
+  padding: 8px 14px;
+  background: #f8fafc;
+  border-radius: 20px;
+  border: 1.5px solid #e2e8f0;
+}
+
+/* Pulse animation for new users */
+@keyframes userJoin {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.user-badge {
+  animation: userJoin 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .active-users {
+    gap: 12px;
+  }
+
+  .user-badge {
+    padding: 6px 12px 6px 8px;
+    font-size: 12px;
+  }
+
+  .user-avatar {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .users-count {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .user-name {
+    display: none;
+  }
+
+  .user-badge {
+    padding: 8px;
+    margin-left: -12px;
+  }
+}
