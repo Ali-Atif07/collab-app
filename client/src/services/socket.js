@@ -5,7 +5,7 @@ let socket;
 export const getSocket = () => {
 
   if (!socket) {
-    const url = process.env.VITE_API_URL || 'http://localhost:5000';
+    const url = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     socket = io(url, {
       transports: ['websocket'],
       reconnection: true,
