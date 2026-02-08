@@ -7,7 +7,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/socket.io': {
-        target:  process.env.VITE_API_URL || 'http://localhost:5000',
+        target:  import.meta.env.VITE_API_URL || 'http://localhost:5000',
         ws: true
       }
     }
